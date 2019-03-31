@@ -13557,6 +13557,17 @@ div#notebook {
 
 <span class="c1"># Function to update offer id</span>
 <span class="k">def</span> <span class="nf">update_offerid</span><span class="p">(</span><span class="n">value</span><span class="p">):</span> 
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    INPUT: </span>
+<span class="sd">    value - (list) the value field containing offer id for offer related records</span>
+<span class="sd">    </span>
+<span class="sd">    OUTPUT:</span>
+<span class="sd">    item - (string) the alphanumeric id for the offer</span>
+<span class="sd">    </span>
+<span class="sd">    Description:</span>
+<span class="sd">    Extracts and returns the offer id from the value field </span>
+<span class="sd">    </span>
+<span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="s1">&#39;offer id&#39;</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>
         <span class="n">item</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;offer id&#39;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
@@ -13565,11 +13576,33 @@ div#notebook {
 
 <span class="c1"># Function to update amount</span>
 <span class="k">def</span> <span class="nf">update_amount</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    INPUT: </span>
+<span class="sd">    value - (list) the value field containing amount for transaction related records</span>
+<span class="sd">    </span>
+<span class="sd">    OUTPUT:</span>
+<span class="sd">    item - (float) the transaction amount</span>
+<span class="sd">    </span>
+<span class="sd">    Description:</span>
+<span class="sd">    Extracts and returns the amount from the value field </span>
+<span class="sd">    </span>
+<span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">item</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;amount&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">item</span>
 
 <span class="c1"># Function to update user reward</span>
 <span class="k">def</span> <span class="nf">update_userreward</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    INPUT: </span>
+<span class="sd">    value - (list) the value field containing reward for offer completion records</span>
+<span class="sd">    </span>
+<span class="sd">    OUTPUT:</span>
+<span class="sd">    item - (int) number of reward points</span>
+<span class="sd">    </span>
+<span class="sd">    Description:</span>
+<span class="sd">    Extracts and returns the reward from the value field </span>
+<span class="sd">    </span>
+<span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">item</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;reward&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">item</span>
 
@@ -13794,6 +13827,17 @@ reward :  0
 
 <span class="c1"># Function to update channel based on the list values</span>
 <span class="k">def</span> <span class="nf">update_channel</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    INPUT: </span>
+<span class="sd">    c - (string) the channel name - email, web, social or mobile</span>
+<span class="sd">    </span>
+<span class="sd">    OUTPUT:</span>
+<span class="sd">    None</span>
+<span class="sd">    </span>
+<span class="sd">    Description:</span>
+<span class="sd">    Creates and updates channel columns for each channel with a boolean value</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">channels_df</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">channels_df</span><span class="p">[</span><span class="s1">&#39;channels&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">x</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="n">channel_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">,</span><span class="s1">&#39;social&#39;</span><span class="p">,</span><span class="s1">&#39;mobile&#39;</span><span class="p">,</span><span class="s1">&#39;web&#39;</span><span class="p">]</span>
@@ -14287,6 +14331,17 @@ reward :  0
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Function to update offer type based on offer id</span>
 <span class="k">def</span> <span class="nf">update_offer_type</span><span class="p">(</span><span class="n">offerid</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    INPUT: </span>
+<span class="sd">    offerid - (string) the alphanumeric id for an offer</span>
+<span class="sd">    </span>
+<span class="sd">    OUTPUT:</span>
+<span class="sd">    offer_type - (string) offer type for a particular offer - bogo, information or discount</span>
+<span class="sd">    </span>
+<span class="sd">    Description:</span>
+<span class="sd">    Returns the offer type for a particular offer id </span>
+<span class="sd">    </span>
+<span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">portfolio</span><span class="p">[</span><span class="n">portfolio</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">offerid</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;offer_type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
@@ -15033,7 +15088,20 @@ income :  2175
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Function to get unique profiles based on offer received, viewed and completion criteria</span>
 <span class="k">def</span> <span class="nf">get_profiles</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">recd</span><span class="p">,</span> <span class="n">viewed</span><span class="p">,</span> <span class="n">comp</span><span class="p">):</span>
-
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    INPUT: </span>
+<span class="sd">    df - (pandas dataframe) the dataframe containing demographic data for users</span>
+<span class="sd">    recd - (bool) 1 for offer received, 0 for offer not received</span>
+<span class="sd">    viewed - (bool) 1 for offer viewed, 0 for offer not viewed</span>
+<span class="sd">    comp - (bool) 1 for offer completed, 0 for offer not completed</span>
+<span class="sd">    </span>
+<span class="sd">    OUTPUT:</span>
+<span class="sd">    unique_profiles - (pandas dataframe) the dataframe containing unique profiles meeting the offer response criteria</span>
+<span class="sd">    </span>
+<span class="sd">    Description:</span>
+<span class="sd">    Extracts and returns unique profiles meeting the offer response criteria </span>
+<span class="sd">    </span>
+<span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">filtered_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;offer_recd&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">recd</span><span class="p">)</span> <span class="o">&amp;</span> 
                           <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;offer_viewed&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">viewed</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;offer_comp&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">comp</span><span class="p">)]</span>
 
@@ -15046,6 +15114,17 @@ income :  2175
 
 <span class="c1"># Function to visualize age, gender and income distributions</span>
 <span class="k">def</span> <span class="nf">show_plots</span><span class="p">(</span><span class="n">unique_profiles</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    INPUT: </span>
+<span class="sd">    unique_profiles - (pandas dataframe) the dataframe containing unique profiles with demographics</span>
+<span class="sd">    </span>
+<span class="sd">    OUTPUT:</span>
+<span class="sd">    None</span>
+<span class="sd">    </span>
+<span class="sd">    Description:</span>
+<span class="sd">    Plots age, gender and income distributions</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">f1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
     <span class="n">axis1</span> <span class="o">=</span> <span class="n">f1</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">234</span><span class="p">)</span>
     <span class="n">axis1</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="s1">&#39;Age Distribution&#39;</span><span class="p">)</span>
@@ -15346,6 +15425,18 @@ income :  2175
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Print summary stats for each of the above 4 groups</span>
 <span class="k">def</span> <span class="nf">print_summary</span><span class="p">(</span><span class="n">unique_profiles</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    INPUT: </span>
+<span class="sd">    unique_profiles - (pandas dataframe) the dataframe containing unique profiles of users with demographics</span>
+<span class="sd">    i - (int) indicates group number</span>
+<span class="sd">    </span>
+<span class="sd">    OUTPUT:</span>
+<span class="sd">    None</span>
+<span class="sd">    </span>
+<span class="sd">    Description:</span>
+<span class="sd">    Prints summary stats for a given group of users</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;&#39;&#39;</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Group &#39;</span><span class="p">,</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39; size: &#39;</span><span class="p">,</span> <span class="n">unique_profiles</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Group &#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s1">&#39; - Top Ages: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">unique_profiles</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Group &#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s1">&#39; - Average Age: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">unique_profiles</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
