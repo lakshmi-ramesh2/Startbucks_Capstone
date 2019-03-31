@@ -46,6 +46,7 @@ We will attempt to identify similarity between users and cluster them into segme
 
 This analysis will help understand the current customer base and how they respond to offers, but can also help with assigning new customers into existing segments to dictate what offers would work best for them.
 
+More details can be found in this blog post: https://medium.com/@lakshmiaraman/customer-behavior-analysis-and-segmentation-for-starbucks-977f1d2291f7
 
 ## File Descriptions <a name="files"></a>
 
