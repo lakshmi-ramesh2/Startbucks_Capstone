@@ -13194,6 +13194,35 @@ div#notebook {
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="PROJECT-OVERVIEW">PROJECT OVERVIEW<a class="anchor-link" href="#PROJECT-OVERVIEW">&#182;</a></h1><p>This project utilizes simulated data about Starbucks customer behavior using their mobile application. Primarily, the data set contains 3 data sets:</p>
+<ol>
+<li>Portfolio: This data set contains information about various offers, the offer type, validity etc.</li>
+<li>Profile: This data set contains information about Starbucks customers along with some demographic information</li>
+<li>Transcript: This data set contains transactions such as purchases as well as offer interaction details </li>
+</ol>
+<p>From this data set, we will be primarily trying to explore how Starbucks customers interact with offers they receive and look for similarity between customer segments to inform what types of offers might work best for the various segments.</p>
+<h1 id="PROBLEM-STATEMENT">PROBLEM STATEMENT<a class="anchor-link" href="#PROBLEM-STATEMENT">&#182;</a></h1><p>In this project, we will be attempting to answer the following business questions:</p>
+<h3 id="1.-CHANNEL-ANALYSIS">1. CHANNEL ANALYSIS<a class="anchor-link" href="#1.-CHANNEL-ANALYSIS">&#182;</a></h3><p>Exploring channels and which channels work best is a common marketing problem. We will attempt to answer which channels do most completed offers come from. Understanding the best performing channels can result in spend optimization and ensure that the larger chunk of the marketing budget goes to the best channels.</p>
+<h3 id="2.-OFFER-TYPE-ANALYSIS">2. OFFER TYPE ANALYSIS<a class="anchor-link" href="#2.-OFFER-TYPE-ANALYSIS">&#182;</a></h3><p>In this section, we will attempt to answer how offer received, viewed and completion numbers change with offer types. Understanding how offer interactions differ based on offer types can suggest which types of offers to invest in more.</p>
+<h3 id="3.-DEMOGRAPHIC-ANALYSIS">3. DEMOGRAPHIC ANALYSIS<a class="anchor-link" href="#3.-DEMOGRAPHIC-ANALYSIS">&#182;</a></h3><p>We will attempt to answer how age, gender and income differs between different user groups. The 4 main user groups we are interested in are:</p>
+<ul>
+<li>Users that receive offers, view offers and complete offers</li>
+<li>Users that receive offers, view offers and DO NOT complete offers</li>
+<li>Users that receive offers, DO NOT view offers and DO NOT complete offers</li>
+<li>Users that receive offers, DO NOT view offers and complete offers</li>
+</ul>
+<p>Based on the above, we may be able to understand better the demographics of the converting users and also inform improvements to offers for different user groups.</p>
+<h3 id="4.-CLUSTER-ANALYSIS">4. CLUSTER ANALYSIS<a class="anchor-link" href="#4.-CLUSTER-ANALYSIS">&#182;</a></h3><p>We will attempt to identify similarity between users and cluster them into segments to derive insights. We will attempt to answer questions like, which customer segments make the most number of purchases, which customer segments have the most offer completion rate for bogo offers etc.</p>
+<p>This analysis will help understand the current customer base and how they respond to offers, but can also help with assigning new customers into existing segments to dictate what offers would work best for them.</p>
+<h1 id="METRICS">METRICS<a class="anchor-link" href="#METRICS">&#182;</a></h1><p>The main metric we will be looking at is the number of clusters for segmenting the customer base. This metric is important to consider since we want an ideal number of clusters that is sufficient to describe the customer charecteristics.</p>
+<p>In order to arrive at the right number of clusters, we will run the clustering algorithm for a range (1-20 number of clusters) and monitor the scores for the model to determine the ideal number of clusters.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[307]:</div>
@@ -13809,7 +13838,7 @@ value :  0
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="CHANNEL-ANALYSIS-AND-THEIR-INFLUENCE-ON-OFFER-COMPLETION-RATES">CHANNEL ANALYSIS AND THEIR INFLUENCE ON OFFER COMPLETION RATES<a class="anchor-link" href="#CHANNEL-ANALYSIS-AND-THEIR-INFLUENCE-ON-OFFER-COMPLETION-RATES">&#182;</a></h2><p>For this analysis, we will be looking at all offers completed from the transcript dataset and matching them against the portfolio datasets to see which channels those offers came from.</p>
+<h2 id="CHANNEL-ANALYSIS">CHANNEL ANALYSIS<a class="anchor-link" href="#CHANNEL-ANALYSIS">&#182;</a></h2><p>For this analysis, we will be looking at all offers completed from the transcript dataset and matching them against the portfolio datasets to see which channels those offers came from.</p>
 <p>Here are the steps I will go through:</p>
 <ol>
 <li>Check the portfolio dataset for any null values and handle if necessary</li>
@@ -14146,7 +14175,7 @@ reward :  0
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="ANALYSIS-OF-OFFER-TYPES-TO-UNDERSTAND-IMPACT-ON-VIEWING-AND-COMPLETION-OF-OFFERS">ANALYSIS OF OFFER TYPES TO UNDERSTAND IMPACT ON VIEWING AND COMPLETION OF OFFERS<a class="anchor-link" href="#ANALYSIS-OF-OFFER-TYPES-TO-UNDERSTAND-IMPACT-ON-VIEWING-AND-COMPLETION-OF-OFFERS">&#182;</a></h2><p>We will be looking at how receiving, viewing and completion of offers differs by offer types - bogo, discount and informational.</p>
+<h2 id="OFFER-TYPE-ANALYSIS">OFFER TYPE ANALYSIS<a class="anchor-link" href="#OFFER-TYPE-ANALYSIS">&#182;</a></h2><p>We will be looking at how receiving, viewing and completion of offers differs by offer types - bogo, discount and informational.</p>
 <p>For this analysis, we will start by creating a dataframe out of the transcript_clean dataset that contains records for each person and offer id, if they received, viewed and/or completed the offer. We will be removing any records pertaining to purchases since for this analysis, we will be looking at if offers were completed or not primarily.</p>
 
 </div>
@@ -14662,8 +14691,7 @@ Name: offer_id, dtype: int64</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>ANALYSIS RESULTS</p>
-<p>Based on the above, we can see that even though almost the same amount of bogo and discount offers are received, bogo offers are viewed much more than discount offers. Bogo offers have an 85% viewing rate vs. discount offers which have a 72% viewing rate.</p>
+<h4 id="ANALYSIS-RESULTS">ANALYSIS RESULTS<a class="anchor-link" href="#ANALYSIS-RESULTS">&#182;</a></h4><p>Based on the above, we can see that even though almost the same amount of bogo and discount offers are received, bogo offers are viewed much more than discount offers. Bogo offers have an 85% viewing rate vs. discount offers which have a 72% viewing rate.</p>
 <p>It is also interesting to note that even though the viewing rates are better with bogo, the completion rates are much better for discount offers. For bogos, 53.6% of offers received were completed, whereas for discounts, 60.8% of offers received were completed.</p>
 <p>Viewing rates are better for bogos at 85% compared to discounts at 72%. Informational offers have a 73.5% viewing rate.</p>
 <p>Based on this analysis, you could consider the following approches:</p>
@@ -14678,7 +14706,7 @@ Name: offer_id, dtype: int64</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="ANALYSIS-OF-USER-GROUPS-TO-UNDERSTAND-IMPACT-ON-VIEWING-AND-COMPLETION-OF-OFFERS">ANALYSIS OF USER GROUPS TO UNDERSTAND IMPACT ON VIEWING AND COMPLETION OF OFFERS<a class="anchor-link" href="#ANALYSIS-OF-USER-GROUPS-TO-UNDERSTAND-IMPACT-ON-VIEWING-AND-COMPLETION-OF-OFFERS">&#182;</a></h2><p>Next, we will be analyzing the demographics (age, gender, income) of 4 different groups:</p>
+<h2 id="DEMOGRAPHIC-ANALYSIS">DEMOGRAPHIC ANALYSIS<a class="anchor-link" href="#DEMOGRAPHIC-ANALYSIS">&#182;</a></h2><p>Next, we will be analyzing the demographics (age, gender, income) of 4 different groups:</p>
 <ol>
 <li>Users that receive offers, view offers and complete offers </li>
 <li>Users that receive offers, view offers and DO NOT complete offers</li>
@@ -15591,8 +15619,7 @@ Group  4  - Average Income:
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>ANALYSIS RESULTS</p>
-<p>The insights for Group 4 are the most interesting. Group 4 are the people that receive offers, do not view the offers, and yet end up completing the offers. This means that the offer has no influence on them, they are people who would make purchases regardless. These consumers may be considered as loyal customers.</p>
+<h4 id="ANALYSIS-RESULTS">ANALYSIS RESULTS<a class="anchor-link" href="#ANALYSIS-RESULTS">&#182;</a></h4><p>The insights for Group 4 are the most interesting. Group 4 are the people that receive offers, do not view the offers, and yet end up completing the offers. This means that the offer has no influence on them, they are people who would make purchases regardless. These consumers may be considered as loyal customers.</p>
 <p>Demographic highlights: Group 4 consumers have almost an equal concentration of females as males, although, females lead by a small margin, which is unlike any other groups. Group 4 also has the highest average income of all groups at almost 70,000.</p>
 <p>It may also be helpful to consider a few approaches for this group of customers:</p>
 <ol>
@@ -18476,9 +18503,25 @@ Cluster 4 users have the lowest discount offer completion rate.</p>
 <li>Out of 2640 informational offers received by cluster 4 users, 1757 offers were viewed. Informational offer viewed rate for cluster 4 was 66.6%.</li>
 </ul>
 <p>Once again we see the same trend, where Cluster 3 users received the least amount of informational offers. Cluster 1, 2 and 3 users all had viewing rates in the 70%+ range. Cluster 4 came in at 66.6% viewing rate. Overall, informational offers have good viewing rates across clusters.</p>
-<h4 id="OVERALL-OFFER-RESPONSE-ANALYSIS">OVERALL OFFER RESPONSE ANALYSIS<a class="anchor-link" href="#OVERALL-OFFER-RESPONSE-ANALYSIS">&#182;</a></h4><p>Cluster 3 users somehow have always received the least number of offers even though they have some high completion rates. This means that this is definitely a good user segment to consider for sending more offers. This cluster of users also spends more given their higher income bracket are more females than males.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="CONCLUSION">CONCLUSION<a class="anchor-link" href="#CONCLUSION">&#182;</a></h2><p>Cluster 3 users somehow have always received the least number of offers even though they have some high completion rates. This means that this is definitely a good user segment to consider for sending more offers. This cluster of users also spends more given their higher income bracket are more females than males.</p>
 <p>Cluster 4 users respond the least favoritely to offers in general. These users would not be a good user segment for offers especially given they fall into the lower income bracket.</p>
-<p>In general, it was also seen that across all 4 clusters, users respond better to discount offers than bogo offers.</p>
+<p>It was also quite interesting to see that across all 4 clusters, users respond better to discount offers than bogo offers.</p>
+<h2 id="FUTURE-IMPROVEMENT">FUTURE IMPROVEMENT<a class="anchor-link" href="#FUTURE-IMPROVEMENT">&#182;</a></h2><p>Various type of additional analysis can be considered for this dataset. Some future improvement ideas are below:</p>
+<ol>
+<li><p>Explore informational offers further to see their impact and if they lead to purchases. Consider exploring users that have received informational offers only and see if there was a purchase within the valid duration of the offer.</p>
+</li>
+<li><p>Within each type of offer, bogo and discounts, explore further the impact of duration, rewards and difficulty and how they influence the offer response and purchase behavior</p>
+</li>
+<li><p>Consider implementing prediction model for predictive customer scoring and/or predicting offer response or likelihood of purchase.</p>
+</li>
+</ol>
 
 </div>
 </div>
