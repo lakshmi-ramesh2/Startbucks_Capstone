@@ -13235,7 +13235,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Data Exploration</p>
+<h1 id="Data-Exploration">Data Exploration<a class="anchor-link" href="#Data-Exploration">&#182;</a></h1><p>Let's start with initial exploration of the 3 datasets - portfolio, profile and transaction. We will take a quick preview to see what fields are in the dataset and run describe to look at some stats.</p>
 
 </div>
 </div>
@@ -13348,6 +13348,19 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">portfolio</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">In&nbsp;[195]:</div>
 <div class="inner_cell">
     <div class="input_area">
@@ -13448,6 +13461,19 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">profile</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">In&nbsp;[196]:</div>
 <div class="inner_cell">
     <div class="input_area">
@@ -13540,10 +13566,24 @@ div#notebook {
 </div>
 
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">transcript</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The transcript dataset is one we definitely are going to need to clean up a little bit. I will start by extracting the offer id, amount and rewards fields from the value field into its own columns for use later.</p>
+<h3 id="OBSERVATIONS">OBSERVATIONS<a class="anchor-link" href="#OBSERVATIONS">&#182;</a></h3><p>The transcript dataset is one we definitely are going to need to clean up a little bit. I will start by extracting the offer id, amount and rewards fields from the value field into its own columns for use later.</p>
+<p>I will also perform a check to see if there are any fields containing null values that need to dealt with.</p>
 
 </div>
 </div>
@@ -13769,8 +13809,13 @@ value :  0
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>CHANNEL ANALYSIS AND THEIR INFLUENCE ON OFFER COMPLETION RATES</p>
-<p>For this analysis, we will be looking at all offers completed from the transcript dataset and matching them against the portfolio datasets to see which channels those offers came from.</p>
+<h2 id="CHANNEL-ANALYSIS-AND-THEIR-INFLUENCE-ON-OFFER-COMPLETION-RATES">CHANNEL ANALYSIS AND THEIR INFLUENCE ON OFFER COMPLETION RATES<a class="anchor-link" href="#CHANNEL-ANALYSIS-AND-THEIR-INFLUENCE-ON-OFFER-COMPLETION-RATES">&#182;</a></h2><p>For this analysis, we will be looking at all offers completed from the transcript dataset and matching them against the portfolio datasets to see which channels those offers came from.</p>
+<p>Here are the steps I will go through:</p>
+<ol>
+<li>Check the portfolio dataset for any null values and handle if necessary</li>
+<li>For all completed offers, find the related offer ids and channels they came from</li>
+<li>Explore channels by offer types </li>
+</ol>
 
 </div>
 </div>
@@ -14092,8 +14137,7 @@ reward :  0
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>ANALYSIS RESULTS</p>
-<p>There are only 8 completed offers so there isn't much data here, but from what we see, every offer has been sent via email, which is the most common channel overall. Social is the least common channel. Similar results are observed when looking at the data broken down by offer type as well.</p>
+<h3 id="ANALYSIS-RESULTS">ANALYSIS RESULTS<a class="anchor-link" href="#ANALYSIS-RESULTS">&#182;</a></h3><p>There are only 8 completed offers so there isn't much data here, but from what we see, every offer has been sent via email, which is the most common channel overall. Social is the least common channel. Similar results are observed when looking at the data broken down by offer type as well.</p>
 <p>This analysis would be more effective with a larger number of offers in the dataset, so not drawing any conclusions here.</p>
 
 </div>
@@ -14102,9 +14146,8 @@ reward :  0
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>ANALYSIS OF OFFER TYPES TO UNDERSTAND IMPACT ON VIEWING AND COMPLETION OF OFFERS</p>
-<p>We will be looking at how receiving, viewing and completion of offers differs by offer types - bogo, discount and informational.</p>
-<p>For this analysis, we will start by creating a dataframe out of the transcript_clean dataset that contains records for each person and offer id, if they received, viewed and/or completed the offer. We will be removing any records pertaining to purchases since for this analysis, we will be looking at offer completions primarily.</p>
+<h2 id="ANALYSIS-OF-OFFER-TYPES-TO-UNDERSTAND-IMPACT-ON-VIEWING-AND-COMPLETION-OF-OFFERS">ANALYSIS OF OFFER TYPES TO UNDERSTAND IMPACT ON VIEWING AND COMPLETION OF OFFERS<a class="anchor-link" href="#ANALYSIS-OF-OFFER-TYPES-TO-UNDERSTAND-IMPACT-ON-VIEWING-AND-COMPLETION-OF-OFFERS">&#182;</a></h2><p>We will be looking at how receiving, viewing and completion of offers differs by offer types - bogo, discount and informational.</p>
+<p>For this analysis, we will start by creating a dataframe out of the transcript_clean dataset that contains records for each person and offer id, if they received, viewed and/or completed the offer. We will be removing any records pertaining to purchases since for this analysis, we will be looking at if offers were completed or not primarily.</p>
 
 </div>
 </div>
@@ -14635,16 +14678,16 @@ Name: offer_id, dtype: int64</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>ANALYSIS OF USER GROUPS TO UNDERSTAND IMPACT ON VIEWING AND COMPLETION OF OFFERS</p>
-<p>Next, we will be analyzing the demographics (age, gender, income) of 4 different groups:</p>
+<h2 id="ANALYSIS-OF-USER-GROUPS-TO-UNDERSTAND-IMPACT-ON-VIEWING-AND-COMPLETION-OF-OFFERS">ANALYSIS OF USER GROUPS TO UNDERSTAND IMPACT ON VIEWING AND COMPLETION OF OFFERS<a class="anchor-link" href="#ANALYSIS-OF-USER-GROUPS-TO-UNDERSTAND-IMPACT-ON-VIEWING-AND-COMPLETION-OF-OFFERS">&#182;</a></h2><p>Next, we will be analyzing the demographics (age, gender, income) of 4 different groups:</p>
 <ol>
 <li>Users that receive offers, view offers and complete offers </li>
 <li>Users that receive offers, view offers and DO NOT complete offers</li>
 <li>Users that receive offers and DO NOT view offers and DO NOT complete offers</li>
 <li>Users that receive offers and DO NOT view offers and complete offers</li>
 </ol>
-<p>We will be using the user_offers_clean dataframe built previously. We will start out by looking at the profile dataset further to check if it requires any cleansing.</p>
+<p>We will be using the user_offers_clean dataframe built previously. We will start out by looking at the profile dataset further for null fields to check if it requires any cleansing.</p>
 <p>Since completion is an important consideration for our analysis, we will be removing 'information' offers from this analysis, since 'informational' offers can only be received and viewed, but not completed.</p>
+<p>We will be creating 4 groups of the unique user profiles based on offer response as mentioned above that we can use for analysis.</p>
 
 </div>
 </div>
@@ -15569,14 +15612,15 @@ Group  4  - Average Income:
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>CLUSTER ANALYSIS - WHICH USERS REACT BEST TO WHICH OFFER TYPES</p>
-<p>Next, I am going to attempt to cluster all the users to analyze purchase patterns as well as offer responses. I will be attempting to answer the below questions.</p>
+<h2 id="CLUSTER-ANALYSIS---WHICH-USERS-REACT-BEST-TO-WHICH-OFFER-TYPES">CLUSTER ANALYSIS - WHICH USERS REACT BEST TO WHICH OFFER TYPES<a class="anchor-link" href="#CLUSTER-ANALYSIS---WHICH-USERS-REACT-BEST-TO-WHICH-OFFER-TYPES">&#182;</a></h2><p>Next, I am going to attempt to cluster all the users to analyze purchase patterns as well as offer responses. I will be attempting to answer the below questions.</p>
 <ol>
 <li>Which customer clusters make the most number of purchases and have the largest transaction amounts</li>
 <li>Which customer clusters complete bogo offers the most</li>
 <li>Which customer clusters complete discount offers the most</li>
 <li>Which customer clusters view informational offers the most</li>
 </ol>
+<p>We will start off with the profile_clean dataframe as our foundation since it contains one record per person. We will add on offer response, transactional and offer type details to this dataframe for our clustering.</p>
+<p>I decided to use Kmeans for this clustering analysis since it's more general purpose and we are not looking for too many clusters in this case. Before we use the dataset for clustering, we will also need to make sure we have no missing values, most features are numeric and categorical features are handled appropriately.</p>
 
 </div>
 </div>
@@ -15789,6 +15833,14 @@ Group  4  - Average Income:
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As a first step, let's add the offer response details to our cluster_df dataframe. For every person id in our dataframe, we will look at the number of bogo offers received, viewed and completed and add it to the dataframe. We will follow a similar process for discount and informational offers.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[225]:</div>
@@ -15987,6 +16039,14 @@ Group  4  - Average Income:
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Next, let's add purchase transaction details to our dataset. We will start by filtering the 'transaction' event records from the transcript_clean dataset and calculating total number of transactions, total amount and average amount for each person and adding it to our dataset.</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -16282,6 +16342,14 @@ Group  4  - Average Income:
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Next, we will get the user rewards for every offer completion and assign the total rewards to each person.</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -16587,6 +16655,14 @@ Group  4  - Average Income:
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now that we have all the relevant fields in the dataframe, let's take a look to see if we have any missing values in our dataset that we need to handle.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[231]:</div>
@@ -16873,7 +16949,7 @@ total_user_reward :  0
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Next, let's clean up the following fields:</p>
+<p>Now that we have handled missing values, we have a few more columns that we need to clean up.</p>
 <ul>
 <li>became_member_on: In order have a good numeric feature for our clustering, I will be cleaning up this field so it can be number of days a user has been a member instead of a date field</li>
 <li>gender: I will be dummy encoding this field since it's categorical</li>
@@ -17379,7 +17455,7 @@ total_user_reward :  0
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The rate of change of the scores seems to be slowing down at 4 clusters, so I will be keeping 4 clusters for this analysis.</p>
+<p>Based on the above chart, the rate of change of the scores seems to be slowing down at 4 clusters, so I will be keeping 4 clusters for this analysis.</p>
 
 </div>
 </div>
@@ -17399,6 +17475,18 @@ total_user_reward :  0
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We will assign the predictions back to our cluster_df dataset to make it easier to analyze each cluster.</p>
+<ol>
+<li>Check how many customers were clustered into each cluster</li>
+<li>Explore how gender, age and income are distributed in each cluster</li>
+</ol>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -17672,6 +17760,18 @@ Name: cluster_num, dtype: int64</pre>
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Next, we will take a look at purchase transaction details for each cluster.</p>
+<ol>
+<li>Explore total number of transactions and total transaction amount in each cluster</li>
+<li>Explore average amount per transaction in each cluster</li>
+</ol>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[280]:</div>
@@ -17813,6 +17913,19 @@ Name: cluster_num, dtype: int64</pre>
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Next, let's explore offer response details for bogo, discount and informational offer types</p>
+<ol>
+<li>Explore offer received, viewed and completion for bogo offers for each cluster</li>
+<li>Explore offer received, viewed and completion for discount offers for each cluster</li>
+<li>Explore offer received and viewed for informational offers for each cluster</li>
+</ol>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -18097,6 +18210,19 @@ Name: cluster_num, dtype: int64</pre>
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Explore offer completion rates for bogo, discount and information offer types for each cluster</p>
+<ol>
+<li>Explore bogo offer completion rate for each cluster</li>
+<li>Explore discount offer completion rate for each cluster</li>
+<li>Explore informational offer viewed rate for each cluster</li>
+</ol>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[302]:</div>
@@ -18265,6 +18391,97 @@ Name: cluster_num, dtype: int64</pre>
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="CLUSTER-ANALYSIS-RESULTS">CLUSTER ANALYSIS RESULTS<a class="anchor-link" href="#CLUSTER-ANALYSIS-RESULTS">&#182;</a></h3><p>Here is a summary of my findings based on the cluster analysis above:</p>
+<h4 id="Demographics-for-each-cluster">Demographics for each cluster<a class="anchor-link" href="#Demographics-for-each-cluster">&#182;</a></h4><p>Cluster 1:</p>
+<ul>
+<li>Cluster 1 has a total of 4276 users with income mostly in the range of 70-90K. Males and females are close to equally distributed in this cluster, although males are more than females.</li>
+</ul>
+<p>Cluster 2:</p>
+<ul>
+<li>Cluster 2 has a total of 4480 users with income mostly in the range of 50-70K. There are many more males than females in this cluster.</li>
+</ul>
+<p>Cluster 3:</p>
+<ul>
+<li>Cluster 3 has a total of 2445 users with income mostly in the range of 90-120K. There are more females in this cluster than males. Most users in this cluster are aged 35 and above.</li>
+</ul>
+<p>Cluster 4:</p>
+<ul>
+<li>Cluster 4 has a total of 3624 users with income mostly in the range of 10-50K. There are many more males than females in this cluster. </li>
+</ul>
+<p>The most niche cluster of all is Cluster 3, with more females, 35+ age range and the highest income range. It is also the smallest cluster of all.</p>
+<h4 id="Transaction-Details-for-each-cluster">Transaction Details for each cluster<a class="anchor-link" href="#Transaction-Details-for-each-cluster">&#182;</a></h4><p>Cluster 1:</p>
+<ul>
+<li>Cluster 1 has a total of 31888 transactions with a total amount of 597428.85 and an average amount per transaction of 18.74.</li>
+<li>Cluster 2 has a total of 40543 transactions with a total amount of 448131.32 and an average amount per transaction of 11.05.</li>
+<li>Cluster 3 has a total of 15167 transactions with a total amount of 448736.49 and an average amount per transaction of 29.59.</li>
+<li>Cluster 4 has a total of 36359 transactions with a total amount of 240645.74 and an average amount per transaction of 6.62.</li>
+</ul>
+<p>Cluster 2 has the most number of transcations, but the average amount per transaction is in the lower half.
+Cluster 4 has the lowest total amount and average amount per transaction of all clusters. This is aligned with the income range we saw in the demographic details for this cluster, cluster 4's income range was in 10-50K.
+Cluster 3 has the least number of transactions of all, but the highest average amount per transaction. This makes sense that Cluster 3 users spend more given that based on the demographics analysis we saw Cluster 3 users were of a higher income range.</p>
+<h4 id="Offer-Response-for-Bogo-offers-for-each-cluster">Offer Response for Bogo offers for each cluster<a class="anchor-link" href="#Offer-Response-for-Bogo-offers-for-each-cluster">&#182;</a></h4><p>Cluster 1:</p>
+<ul>
+<li>Out of 6353 bogo offers received by cluster 1 users, 5466 offers were viewed and 4354 offers were completed. Bogo offer completion rate for cluster 1 was 68.5%.</li>
+</ul>
+<p>Cluster 2:</p>
+<ul>
+<li>Out of 6648 bogo offers received by cluster 2 users, 5792 offers were viewed and 3812 offers were completed. Bogo offer completion rate for cluster 2 was 57.3%.</li>
+</ul>
+<p>Cluster 3:</p>
+<ul>
+<li>Out of 3630 bogo offers received by cluster 3 users, 3000 offers were viewed and 2825 offers were completed. Bogo offer completion rate for cluster 3 was 77.8%.</li>
+</ul>
+<p>Cluster 4:</p>
+<ul>
+<li>Out of 5431 bogo offers received by cluster 4 users, 4432 offers were viewed and 2209 offers were completed. Bogo offer completion rate for cluster 4 was 40.7%.</li>
+</ul>
+<p>Cluster 3 received the least number of bogo offers but had the largest offer completion rate. 
+Cluster 4 users have the least bogo offer completion rate.</p>
+<h4 id="Offer-Response-for-Discount-offers-for-each-cluster">Offer Response for Discount offers for each cluster<a class="anchor-link" href="#Offer-Response-for-Discount-offers-for-each-cluster">&#182;</a></h4><p>Cluster 1:</p>
+<ul>
+<li>Out of 6395 discount offers received by cluster 1 users, 4843 offers were viewed and 4730 offers were completed. Discount offer completion rate for cluster 1 was 74%.</li>
+</ul>
+<p>Cluster 2:</p>
+<ul>
+<li>Out of 6680 discount offers received by cluster 2 users, 4929 offers were viewed and 4286 offers were completed. Discount offer completion rate for cluster 2 was 64.2%.</li>
+</ul>
+<p>Cluster 3:</p>
+<ul>
+<li>Out of 3642 discount offers received by cluster 3 users, 2681 offers were viewed and 2917 offers were completed. Discount offer completion rate for cluster 3 was 80.1%.</li>
+</ul>
+<p>Cluster 4:</p>
+<ul>
+<li>Out of 5402 discount offers received by cluster 4 users, 3308 offers were viewed and 2809 offers were completed. Discount offer completion rate for cluster 4 was 52%.</li>
+</ul>
+<p>Cluster 3 users, yet again, have the highest discount offer completion rates, even though they received the least number of discount offers.
+Cluster 4 users have the lowest discount offer completion rate.</p>
+<h4 id="Offer-Response-for-Informational-offers-for-each-cluster">Offer Response for Informational offers for each cluster<a class="anchor-link" href="#Offer-Response-for-Informational-offers-for-each-cluster">&#182;</a></h4><p>Cluster 1:</p>
+<ul>
+<li>Out of 3111 informational offers received by cluster 1 users, 2340 offers were viewed. Informational offer viewed rate for cluster 1 was 75.2%.</li>
+</ul>
+<p>Cluster 2:</p>
+<ul>
+<li>Out of 3450 informational offers received by cluster 2 users, 2633 offers were viewed. Informational offer viewed rate for cluster 2 was 76.3%.</li>
+</ul>
+<p>Cluster 3:</p>
+<ul>
+<li>Out of 1840 informational offers received by cluster 3 users, 1312 offers were viewed. Informational offer viewed rate for cluster 3 was 71.3%.</li>
+</ul>
+<p>Cluster 4:</p>
+<ul>
+<li>Out of 2640 informational offers received by cluster 4 users, 1757 offers were viewed. Informational offer viewed rate for cluster 4 was 66.6%.</li>
+</ul>
+<p>Once again we see the same trend, where Cluster 3 users received the least amount of informational offers. Cluster 1, 2 and 3 users all had viewing rates in the 70%+ range. Cluster 4 came in at 66.6% viewing rate. Overall, informational offers have good viewing rates across clusters.</p>
+<h4 id="OVERALL-OFFER-RESPONSE-ANALYSIS">OVERALL OFFER RESPONSE ANALYSIS<a class="anchor-link" href="#OVERALL-OFFER-RESPONSE-ANALYSIS">&#182;</a></h4><p>Cluster 3 users somehow have always received the least number of offers even though they have some high completion rates. This means that this is definitely a good user segment to consider for sending more offers. This cluster of users also spends more given their higher income bracket are more females than males.</p>
+<p>Cluster 4 users respond the least favoritely to offers in general. These users would not be a good user segment for offers especially given they fall into the lower income bracket.</p>
+<p>In general, it was also seen that across all 4 clusters, users respond better to discount offers than bogo offers.</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
