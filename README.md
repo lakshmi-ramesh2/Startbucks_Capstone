@@ -56,6 +56,12 @@ There are 2 files provided:
 1. Starbucks_Capstone_notebook.ipynb - Jupyter notebook containing all the code and descriptions
 2. Starbucks_Capstone_notebook.html - HTML version of the notebook 
 
+The data files are provided within a data.zip folder. The data folder contains 3 files:
+
+1. portfolio.json
+2. profile.json
+3. transcript.json
+
 ## Acknowledgements <a name="ack"></a>
 
 The data set for this project was provided by Udacity.
