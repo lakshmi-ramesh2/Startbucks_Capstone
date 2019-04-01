@@ -5,6 +5,7 @@
 1. [Libraries Used](#libraries)
 2. [Project Motivation](#motivation)
 3. [File Descriptions](#files)
+4. [Acknowledgements](#ack)
 
 ## Libraries Used <a name="libraries"></a>
 
@@ -54,4 +55,8 @@ There are 2 files provided:
 
 1. Starbucks_Capstone_notebook.ipynb - Jupyter notebook containing all the code and descriptions
 2. Starbucks_Capstone_notebook.html - HTML version of the notebook 
+
+## Acknowledgements <a name="ack"></a>
+
+The data set for this project was provided by Udacity.
 
